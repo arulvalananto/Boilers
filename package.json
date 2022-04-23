@@ -1,0 +1,47 @@
+{
+  "name": "boilers",
+  "version": "1.0.0",
+  "description": "A boilterplate tool for javascript frameworks and libraries",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "boilers": "bin/index.js"
+  },
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arulvalananto/boilers.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "javascript",
+    "boilerplate",
+    "boilerplate",
+    "builder",
+    "js",
+    "boiler",
+    "builder",
+    "boiler",
+    "plate"
+  ],
+  "author": "Arul Valan Anto S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arulvalananto/boilers/issues"
+  },
+  "homepage": "https://github.com/arulvalananto/boilers#readme",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^8.2.2",
+    "meow": "^10.1.2",
+    "ora": "^6.1.0",
+    "yargs": "^17.4.1"
+  }
+}
