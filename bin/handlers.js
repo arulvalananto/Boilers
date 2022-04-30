@@ -42,7 +42,7 @@ export const initHandler = async (argv) => {
           });
 
           fs.cpSync(
-            `../bin/templates/${feature}`,
+            `../bin/templates/${language}/${feature}`,
             `${process.cwd()}/${name}`,
             { recursive: true },
             (err) => {
