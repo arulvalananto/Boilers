@@ -1,6 +1,8 @@
 import chalk from "chalk";
 import inquirer from "inquirer";
 import { exec, execSync } from "child_process";
+import fsExtra from "fs-extra";
+import fs from "fs";
 
 import questions from "./static/questions.js";
 import spinner from "./static/spinners.js";
@@ -29,14 +31,29 @@ export const initHandler = async (argv) => {
 
         spinner.features.start();
         features.map((feature) => {
-          execSync(
-            `cd ${name} && npm install ${packages[feature]}`,
-            (err) => err && console.error(err.message)
+          let command = `cd ${name} &&`;
+
+          if (feature === "tailwind")
+            command += `npm i ${packages[feature][0]} && ${packages[feature][1]}`;
+          else command += ` npm i ${packages[feature]}`;
+
+          execSync(command, (err) => {
+            if (err) return console.error(err.message);
+          });
+
+          fs.cpSync(
+            `../bin/templates/${feature}`,
+            `${process.cwd()}/${name}`,
+            { recursive: true },
+            (err) => {
+              if (err) return console.error(err.message);
+            }
           );
         });
         spinner.features.succeed("ℹ️ features added");
       });
     } else if (language === "node") {
+      console.log("🚧 under construction 🚧");
     }
   }
 };
