@@ -4,7 +4,7 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
 import { scriptName, usage } from "./static/constants.js";
-import { initCommand, listCommand } from "./commands.js";
+import { initCommand, listCommand } from "./functions/commands.js";
 
 yargs(hideBin(process.argv))
   .scriptName(scriptName)
