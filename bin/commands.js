@@ -1,4 +1,4 @@
-import { listHandler, initHandler } from "../handlers.js";
+import { listHandler, initHandler } from "./handlers.js";
 
 export const initCommand = {
   command: ["init", "i"],
