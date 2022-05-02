@@ -1,5 +1,5 @@
 import { copyRecur, execute, rename } from "../utils/helpers.js";
-import spinner from "../static/spinners.js";
+import spinner from "../utils/spinners.js";
 import packages from "../static/packages.js";
 
 class Languages {
