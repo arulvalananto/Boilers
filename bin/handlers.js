@@ -27,11 +27,23 @@ export const initHandler = async (argv) => {
           console.error(err.message);
           process.exit(1);
         }
+        execSync(
+          `cd ${name}/src && mkdir api components pages utils`,
+          (err) => {
+            if (err) {
+              console.error(err.message);
+              process.exit(1);
+            }
+          }
+        );
+
         spinner.install.succeed("📦 dependencies installed");
 
         spinner.features.start();
         features.map((feature) => {
           let command = `cd ${name} &&`;
+          let copyFileLocation = `../bin/templates/${language}/${feature}`;
+          let currentLocation = `${process.cwd()}/${name}`;
 
           if (feature === "tailwind")
             command += `npm i ${packages[feature][0]} && ${packages[feature][1]}`;
@@ -41,14 +53,42 @@ export const initHandler = async (argv) => {
             if (err) return console.error(err.message);
           });
 
-          fs.cpSync(
-            `../bin/templates/${language}/${feature}`,
-            `${process.cwd()}/${name}`,
-            { recursive: true },
-            (err) => {
-              if (err) return console.error(err.message);
-            }
-          );
+          if (feature === "typescript") {
+            const isRedux = features.includes("redux");
+
+            fs.rename(
+              `${currentLocation}/src/index.js`,
+              `${currentLocation}/src/index.tsx`,
+              (err) => {
+                if (err) return console.error(err.message);
+              }
+            );
+            fs.rename(
+              `${currentLocation}/src/App.js`,
+              `${currentLocation}/src/App.tsx`,
+              (err) => {
+                if (err) return console.error(err.message);
+              }
+            );
+
+            fs.cpSync(
+              `${copyFileLocation}/${isRedux ? "redux" : "no-redux"}`,
+              currentLocation,
+              { recursive: true },
+              (err) => {
+                if (err) return console.error(err.message);
+              }
+            );
+          } else {
+            fs.cpSync(
+              copyFileLocation,
+              currentLocation,
+              { recursive: true },
+              (err) => {
+                if (err) return console.error(err.message);
+              }
+            );
+          }
         });
         spinner.features.succeed("ℹ️ features added");
       });
