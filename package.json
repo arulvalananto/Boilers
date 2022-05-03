@@ -1,7 +1,7 @@
 {
   "name": "boilers",
-  "version": "1.0.0",
-  "description": "A boilterplate tool for javascript frameworks and libraries",
+  "version": "1.0.2",
+  "description": "A boilerplate tool for javascript frameworks and libraries",
   "main": "index.js",
   "type": "module",
   "bin": {
@@ -27,7 +27,7 @@
     "plate"
   ],
   "author": "Arul Valan Anto S",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/arulvalananto/boilers/issues"
   },
