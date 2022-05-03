@@ -4,11 +4,11 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "FETCH_SAMPLE":
+    case 'FETCH_SAMPLE':
       return {
         ...state,
         sample: {
-          name: "Boilers",
+          name: 'Boilers',
         },
       };
     default:

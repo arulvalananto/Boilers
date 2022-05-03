@@ -1,45 +1,52 @@
 {
-  "name": "boilers",
-  "version": "1.0.2",
-  "description": "A boilerplate tool for javascript frameworks and libraries",
-  "main": "index.js",
-  "type": "module",
-  "bin": {
-    "boilers": "bin/index.js"
-  },
-  "scripts": {
-    "test": "jest --watchAll"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/arulvalananto/boilers.git"
-  },
-  "keywords": [
-    "boilerplate",
-    "javascript",
-    "boilerplate",
-    "boilerplate",
-    "builder",
-    "js",
-    "boiler",
-    "builder",
-    "boiler",
-    "plate"
-  ],
-  "author": "Arul Valan Anto S",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/arulvalananto/boilers/issues"
-  },
-  "homepage": "https://github.com/arulvalananto/boilers#readme",
-  "devDependencies": {
-    "jest": "^27.5.1",
-    "nodemon": "^2.0.15"
-  },
-  "dependencies": {
-    "chalk": "^5.0.1",
-    "inquirer": "^8.2.2",
-    "ora": "^6.1.0",
-    "yargs": "^17.4.1"
-  }
+    "name": "boilers",
+    "version": "1.0.2",
+    "description": "A boilerplate tool for javascript frameworks and libraries",
+    "main": "index.js",
+    "type": "module",
+    "bin": {
+        "boilers": "bin/index.js"
+    },
+    "scripts": {
+        "test": "jest --watchAll",
+        "lint": "eslint .  --ext .js",
+        "lint-fix": "eslint --fix .  --ext .js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/arulvalananto/boilers.git"
+    },
+    "keywords": [
+        "boilerplate",
+        "javascript",
+        "boilerplate",
+        "boilerplate",
+        "builder",
+        "js",
+        "boiler",
+        "builder",
+        "boiler",
+        "plate"
+    ],
+    "author": "Arul Valan Anto S",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/arulvalananto/boilers/issues"
+    },
+    "homepage": "https://github.com/arulvalananto/boilers#readme",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.22.0",
+        "@typescript-eslint/parser": "^5.22.0",
+        "eslint": "^8.14.0",
+        "eslint-config-google": "^0.14.0",
+        "eslint-plugin-jest": "^26.1.5",
+        "jest": "^27.5.1",
+        "nodemon": "^2.0.15"
+    },
+    "dependencies": {
+        "chalk": "^5.0.1",
+        "inquirer": "^8.2.2",
+        "ora": "^6.1.0",
+        "yargs": "^17.4.1"
+    }
 }
