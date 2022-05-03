@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs';
-import {hideBin} from 'yargs/helpers';
+import { hideBin } from 'yargs/helpers';
 
-import {scriptName, usage} from './static/constants.js';
-import {initCommand, listCommand} from './functions/commands.js';
+import { scriptName, usage } from './static/constants.js';
+import { initCommand, listCommand } from './functions/commands.js';
 
 yargs(hideBin(process.argv))
     .scriptName(scriptName)
@@ -13,12 +13,12 @@ yargs(hideBin(process.argv))
         initCommand.command,
         initCommand.description,
         initCommand.builder,
-        initCommand.handler,
+        initCommand.handler
     )
     .command(
         listCommand.command,
         listCommand.description,
         listCommand.builder,
-        listCommand.handler,
+        listCommand.handler
     )
     .help(true).argv;
