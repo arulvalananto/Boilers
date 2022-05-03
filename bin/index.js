@@ -4,7 +4,11 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import { scriptName, usage } from './static/constants.js';
-import { initCommand, listCommand } from './functions/commands.js';
+import {
+    createCommand,
+    initCommand,
+    listCommand,
+} from './functions/commands.js';
 
 yargs(hideBin(process.argv))
     .scriptName(scriptName)
@@ -20,5 +24,11 @@ yargs(hideBin(process.argv))
         listCommand.description,
         listCommand.builder,
         listCommand.handler
+    )
+    .command(
+        createCommand.command,
+        createCommand.description,
+        createCommand.builder,
+        createCommand.handler
     )
     .help(true).argv;

@@ -7,11 +7,7 @@
     "bin": {
         "boilers": "bin/index.js"
     },
-    "scripts": {
-        "test": "jest --watchAll --coverage",
-        "lint": "eslint .  --ext .js",
-        "lint-fix": "eslint --fix .  --ext .js"
-    },
+    "scripts": {},
     "repository": {
         "type": "git",
         "url": "git+https://github.com/arulvalananto/boilers.git"
@@ -35,13 +31,15 @@
     },
     "homepage": "https://github.com/arulvalananto/boilers#readme",
     "devDependencies": {
-        "jest": "^27.5.1",
+        "mocha": "^10.0.0",
         "nodemon": "^2.0.15"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "^1.8.1",
         "chalk": "^5.0.1",
         "inquirer": "^8.2.2",
         "ora": "^6.1.0",
+        "react-redux": "^8.0.1",
         "yargs": "^17.4.1"
     }
 }
