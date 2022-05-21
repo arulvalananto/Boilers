@@ -9,3 +9,6 @@ export const StateProvider = ({reducer, initialState, children}) => (
 );
 
 export const useStateValue = () => useContext(StateContext);
+
+// import useStateValue where you need to use the state value like below
+//  const [state, dispatch] = useStateValue();

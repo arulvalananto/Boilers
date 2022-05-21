@@ -22,13 +22,7 @@ const questions = {
             type: 'checkbox',
             name: 'features',
             message: chalk.blueBright('What would you like to add?'),
-            choices: [
-                'react-router',
-                'contextAPI',
-                'redux',
-                'tailwind',
-                'typescript',
-            ],
+            choices: ['react-router', 'contextAPI', 'redux', 'tailwind'],
         },
     },
     node: {
@@ -36,7 +30,7 @@ const questions = {
             type: 'checkbox',
             name: 'features',
             message: 'What would you like to add?',
-            choices: ['express', 'koa', 'typescript', 'dotenv', 'mongoose'],
+            choices: ['dotenv', 'mongoose', 'bcrypt', 'jsonwebtoken'],
         },
     },
     confirm: {

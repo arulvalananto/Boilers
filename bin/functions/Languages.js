@@ -17,14 +17,9 @@ class Languages {
                 const hasRedux = features.includes('redux');
 
                 if (feature == 'contextAPI' && hasRedux) return;
-                execute(`cd ${name} && npm i ${packages.react[feature]}`);
-
-                if (feature === 'typescript')
-                    copyRecur(
-                        `${tempPath}/${hasRedux ? 'redux' : 'no-redux'}`,
-                        currPath
-                    );
-                else copyRecur(tempPath, currPath);
+                execute(`cd ${name} && npm i ${packages.react[feature]}`, () =>
+                    copyRecur(tempPath, currPath)
+                );
             });
             spinner.features.succeed('ℹ️ features added');
         });

@@ -1,5 +1,6 @@
-import { exec } from 'child_process';
 import fs from 'fs';
+import fsExtra from 'fs-extra';
+import { exec } from 'child_process';
 
 export const execute = (command, callback = () => {}) => {
     exec(command, (err) => {
@@ -15,7 +16,7 @@ export const rename = (oldName, newName) => {
 };
 
 export const copyRecur = (oldPath, newPath) => {
-    fs.cpSync(oldPath, newPath, { recursive: true }, (err) => {
+    fsExtra.cpSync(oldPath, newPath, { recursive: true }, (err) => {
         if (err) return console.error(err.message);
     });
 };
