@@ -1,5 +1,3 @@
-![alt text](https://github.com/arulvalananto/boilers/blob/master/logo.png "Boilers Logo")
-
 # Boilers
 
 A boilterplate tool for react and node.
