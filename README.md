@@ -13,7 +13,7 @@ A boilterplate tool for react and node.
 
 ## How to Install (globally)
 
-```node
+```shell
 npm install -g boilers
 ```
 
@@ -27,7 +27,7 @@ Boilers create  Create specific template                         [aliases: c]
 
 ## How to Remove (globally)
 
-```node
+```shell
 npm remove -g boilers
 ```
 
