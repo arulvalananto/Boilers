@@ -20,9 +20,9 @@ npm install -g boilers
 ## Commands
 
 ```shell
-Boilers init    Initialize a new boilerplate project.            [aliases: i]
-Boilers list    List all available boilerplate or template.      [aliases: ls]
-Boilers create  Create specific template                         [aliases: c]
+boilers init    Initialize a new boilerplate project.            [aliases: i]
+boilers list    List all available boilerplate or template.      [aliases: ls]
+boilers create  Create specific template                         [aliases: c]
 ```
 
 ## How to Remove (globally)
