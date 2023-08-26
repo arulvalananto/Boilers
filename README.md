@@ -3,11 +3,13 @@
 A boilterplate tool for react and node.
 
 ## For What?
-  * To reduce your repetitive tasks and save your time on initial setup.
+
+* To reduce your repetitive tasks and save your time on initial setup.
 
 ## For Who?
-  * Who is doing a lot of projects daily
-  * Who is looking for a tool to automate their repetitive tasks
+
+* Who is doing a lot of projects daily
+* Who is looking for a tool to automate their repetitive tasks
 
 ## How to Install (globally)
 
@@ -17,7 +19,7 @@ npm install -g boilers
 
 ## Commands
 
-```
+```shell
 Boilers init    Initialize a new boilerplate project.            [aliases: i]
 Boilers list    List all available boilerplate or template.      [aliases: ls]
 Boilers create  Create specific template                         [aliases: c]
