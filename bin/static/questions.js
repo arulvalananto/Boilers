@@ -36,6 +36,7 @@ const questions = {
     confirm: {
         type: 'confirm',
         name: 'confirm',
+        default: false,
         message: chalk.blueBright('Are you sure to continue?'),
     },
 };

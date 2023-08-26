@@ -3,32 +3,15 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { scriptName, usage } from './static/constants.js';
-import {
-    createCommand,
-    initCommand,
-    listCommand,
-} from './functions/commands.js';
+import init from './commands/init/index.js';
+import list from './commands/list/index.js';
+import constants from './static/constants.js';
+import create from './commands/create/index.js';
 
 yargs(hideBin(process.argv))
-    .scriptName(scriptName)
-    .usage(usage)
-    .command(
-        initCommand.command,
-        initCommand.description,
-        initCommand.builder,
-        initCommand.handler
-    )
-    .command(
-        listCommand.command,
-        listCommand.description,
-        listCommand.builder,
-        listCommand.handler
-    )
-    .command(
-        createCommand.command,
-        createCommand.description,
-        createCommand.builder,
-        createCommand.handler
-    )
+    .scriptName(constants.SCRIPT_NAME)
+    .usage(constants.CLI_USAGE)
+    .command(init.command, init.description, init.builder, init.handler)
+    .command(list.command, list.description, list.builder, list.handler)
+    .command(create.command, create.description, create.builder, create.handler)
     .help(true).argv;

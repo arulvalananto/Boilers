@@ -1,6 +1,6 @@
 /* eslint-disable require-jsdoc */
-import { copyRecur, execute, rename } from '../utils/helpers.js';
-import spinner from '../utils/spinners.js';
+import { copyRecur, execute, rename } from './helpers.js';
+import spinner from './spinners.js';
 import packages from '../static/packages.js';
 
 class Languages {

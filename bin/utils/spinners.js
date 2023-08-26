@@ -1,14 +1,10 @@
 import ora from 'ora';
 
-export const createSpinner = (text, color) =>
-  ora({
-    text,
-    color,
-  });
-
-const spinner = {
-  install: createSpinner('Installing dependencies', 'yellow'),
-  features: createSpinner('Adding features', 'yellow'),
+const spinner = (message, color) => {
+    return ora({
+        message,
+        color,
+    });
 };
 
 export default spinner;
