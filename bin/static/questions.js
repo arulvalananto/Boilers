@@ -24,6 +24,28 @@ const questions = {
             message: chalk.blueBright('What would you like to add?'),
             choices: ['react-router', 'contextAPI', 'redux', 'tailwind'],
         },
+        extras: {
+            type: 'checkbox',
+            name: 'extras',
+            message: chalk.blueBright('Would you like to add these in?'),
+            choices: [
+                {
+                    name: 'Security Best Practices',
+                    value: 'SBP',
+                    checked: true,
+                },
+                {
+                    name: 'The Open Graph Protocol',
+                    value: 'OGP',
+                    checked: true,
+                },
+                {
+                    name: 'CSS Best Practices',
+                    value: 'CBP',
+                    checked: true,
+                },
+            ],
+        },
     },
     node: {
         features: {

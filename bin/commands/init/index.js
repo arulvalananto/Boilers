@@ -16,12 +16,14 @@ const initHandler = async () => {
         const { features } = await inquirer.prompt(
             questions[language].features
         );
+        const { extras } = await inquirer.prompt(questions[language].extras);
         const { confirm } = await inquirer.prompt(questions.confirm);
 
+        console.log(extras);
         if (!confirm) return console.log(bold(constants.MESSAGE.BYE, 'red'));
         console.log(bold(constants.MESSAGE.INITIAL_SETUP_DONE, 'green'));
 
-        await Languages[language](name, features);
+        await Languages[language](name, features, extras);
     } catch (error) {
         console.error(error.message);
     }
