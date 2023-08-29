@@ -1,5 +1,4 @@
-/* eslint-disable require-jsdoc */
-import { copyRecur, execute, rename } from './helpers.js';
+import { copyRecur, execute } from './helpers.js';
 import spinner from './spinners.js';
 import packages from '../static/packages.js';
 
@@ -23,10 +22,6 @@ class Languages {
             });
             spinner.features.succeed('ℹ️ features added');
         });
-    }
-
-    static node(name) {
-        console.log('🚧 Under construction 🚧');
     }
 }
 

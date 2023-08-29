@@ -4,7 +4,7 @@ const questions = {
     name: {
         type: 'input',
         name: 'name',
-        message: chalk.blueBright('What about project name?'),
+        message: chalk.blueBright('What is the name of the project?'),
         default: 'new-project',
         validate: (input) => {
             if (input.trim().length > 0) return true;
@@ -14,24 +14,44 @@ const questions = {
     languages: {
         type: 'list',
         name: 'language',
-        message: chalk.blueBright('What would you like to use?'),
-        choices: ['react', 'node'],
+        message: chalk.blueBright('Which template do you want to use?'),
+        choices: ['react'],
     },
     react: {
         features: {
             type: 'checkbox',
             name: 'features',
-            message: chalk.blueBright('What would you like to add?'),
-            choices: ['react-router', 'contextAPI', 'redux', 'tailwind'],
+            message: chalk.blueBright(
+                'Would you like to include any of the packages listed?'
+            ),
+            choices: [
+                {
+                    name: 'React Router',
+                    value: 'react-router',
+                },
+                {
+                    name: 'Redux',
+                    value: 'redux',
+                },
+                {
+                    name: 'Tailwind CSS',
+                    value: 'tailwind',
+                },
+            ],
         },
-        extras: {
+        optionalFeatures: {
             type: 'checkbox',
-            name: 'extras',
-            message: chalk.blueBright('Would you like to add these in?'),
+            name: 'optionalFeatures',
+            message: chalk.blueBright('Do you want these items included?'),
             choices: [
                 {
                     name: 'Security Best Practices',
                     value: 'SBP',
+                    checked: true,
+                },
+                {
+                    name: 'Advanced Error Handling Best Practices',
+                    value: 'EHBP',
                     checked: true,
                 },
                 {

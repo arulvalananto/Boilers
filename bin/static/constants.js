@@ -28,4 +28,8 @@ export default {
         INITIAL_SETUP_DONE: '✔ Initial setup done',
         BYE: 'Okay! See you later 🥺',
     },
+    COLORS: {
+        red: 'red',
+        green: 'green',
+    },
 };

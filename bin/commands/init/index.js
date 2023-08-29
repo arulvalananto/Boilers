@@ -5,33 +5,38 @@ import Languages from '../../utils/Languages.js';
 import constants from '../../static/constants.js';
 import questions from '../../static/questions.js';
 
-const INIT = constants.COMMANDS.INIT;
+const { COMMANDS, MESSAGE, COLORS } = constants;
 
 const initHandler = async () => {
     try {
-        console.log(bold(constants.MESSAGE.INTRO));
+        console.log(bold(MESSAGE.INTRO));
 
-        const { name } = await inquirer.prompt(questions.name);
-        const { language } = await inquirer.prompt(questions.languages);
-        const { features } = await inquirer.prompt(
-            questions[language].features
-        );
-        const { extras } = await inquirer.prompt(questions[language].extras);
-        const { confirm } = await inquirer.prompt(questions.confirm);
+        const { name, language } = await inquirer.prompt([
+            questions.name,
+            questions.languages,
+        ]);
 
-        console.log(extras);
-        if (!confirm) return console.log(bold(constants.MESSAGE.BYE, 'red'));
-        console.log(bold(constants.MESSAGE.INITIAL_SETUP_DONE, 'green'));
+        const { features, optionalFeatures, confirm } = await inquirer.prompt([
+            questions[language].features,
+            questions[language].optionalFeatures,
+            questions.confirm,
+        ]);
 
-        await Languages[language](name, features, extras);
+        if (!confirm) {
+            console.log(bold(MESSAGE.BYE, COLORS.red));
+            return;
+        }
+        console.log(bold(MESSAGE.INITIAL_SETUP_DONE, COLORS.green));
+
+        // await Languages[language](name, features, optionalFeatures);
     } catch (error) {
         console.error(error.message);
     }
 };
 
 const initCommand = {
-    command: INIT.COMMANDS,
-    description: INIT.DESCRIPTION,
+    command: COMMANDS.INIT.COMMANDS,
+    description: COMMANDS.INIT.DESCRIPTION,
     handler: initHandler,
     builder: () => {},
 };
