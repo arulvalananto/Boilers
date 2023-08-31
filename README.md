@@ -25,7 +25,7 @@ boilers list    List all available boilerplate or template.      [aliases: ls]
 boilers create  Create specific template                         [aliases: c]
 ```
 
-## How to Remove globally
+## How to Remove (globally)
 
 ```shell
 npm remove -g boilers
