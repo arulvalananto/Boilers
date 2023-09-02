@@ -4,7 +4,7 @@ A boilterplate tool for react and node.
 
 ## For What?
 
-* To reduce your repetitive tasks and save your time on initial setup.
+* To reduce your repetitive tasks and save your development time on initial setup.
 
 ## For Who?
 
