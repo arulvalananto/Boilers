@@ -11,7 +11,7 @@ A boilterplate tool for react and node.
 * Who is doing a lot of projects daily
 * Who is looking for a tool to automate their repetitive tasks
 
-## How to Install (globally)
+## How to Install
 
 ```shell
 npm install -g boilers
