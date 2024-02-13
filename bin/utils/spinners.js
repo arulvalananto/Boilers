@@ -1,4 +1,5 @@
 import ora from "ora";
+import constants from "../static/constants.js";
 
 export const createSpinner = (text, color) =>
   ora({
@@ -7,10 +8,10 @@ export const createSpinner = (text, color) =>
   });
 
 const spinner = {
-  download: createSpinner("Downloading files", "yellow"),
-  install: createSpinner("Installing dependencies", "yellow"),
-  folders: createSpinner("Creating folders", "yellow"),
-  features: createSpinner("Adding features", "yellow"),
+  instation: createSpinner(constants.SPINNER.INSTATION.START, "yellow"),
+  install: createSpinner(constants.SPINNER.INSTALL.START, "yellow"),
+  folders: createSpinner(constants.SPINNER.FOLDERS.START, "yellow"),
+  features: createSpinner(constants.SPINNER.FEATURES.START, "yellow"),
 };
 
 export default spinner;

@@ -27,4 +27,26 @@ export default {
     red: "red",
     green: "green",
   },
+  SPINNER: {
+    INSTATION: {
+      START: "Downloading files",
+      SUCCEED: "📃 project files downloaded",
+      FAIL: "project files download failed",
+    },
+    INSTALL: {
+      START: "Installing dependencies",
+      SUCCEED: "📦 dependencies installed",
+      FAIL: "dependencies install failed",
+    },
+    FOLDERS: {
+      START: "Creating folders",
+      SUCCEED: "📂 folders created",
+      FAIL: "folders creation failed",
+    },
+    FEATURES: {
+      START: "Adding features",
+      SUCCEED: "🧩 features added",
+      FAIL: "features addition failed",
+    },
+  },
 };

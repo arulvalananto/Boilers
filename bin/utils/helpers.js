@@ -3,18 +3,15 @@ import fsExtra from "fs-extra";
 import { exec } from "child_process";
 import chalk from "chalk";
 
-export const execute = (
-  command,
-  callback = () => {},
-  spinnerFailMessage = () => {}
-) => {
-  exec(command, (err) => {
-    if (err) {
-      console.error("\n" + err.message);
-      spinnerFailMessage();
-      return;
-    }
-    callback();
+export const execute = (command) => {
+  return new Promise((resolve, reject) => {
+    exec(command, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
   });
 };
 
