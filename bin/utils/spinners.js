@@ -11,6 +11,7 @@ const spinner = {
   instation: createSpinner(constants.SPINNER.INSTATION.START, "yellow"),
   install: createSpinner(constants.SPINNER.INSTALL.START, "yellow"),
   folders: createSpinner(constants.SPINNER.FOLDERS.START, "yellow"),
+  cleanup: createSpinner(constants.SPINNER.CLEANUP.START, "yellow"),
   features: createSpinner(constants.SPINNER.FEATURES.START, "yellow"),
 };
 

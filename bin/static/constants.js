@@ -43,6 +43,11 @@ export default {
       SUCCEED: "📂 folders created",
       FAIL: "folders creation failed",
     },
+    CLEANUP: {
+      START: "Cleaning up",
+      SUCCEED: "🧹 cleanup done",
+      FAIL: "cleanup failed",
+    },
     FEATURES: {
       START: "Adding features",
       SUCCEED: "🧩 features added",

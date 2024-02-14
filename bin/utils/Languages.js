@@ -1,8 +1,17 @@
+import path from "path";
+import { fileURLToPath } from "url";
 import spinner from "./spinners.js";
-import { execute } from "./helpers.js";
 import constants from "../static/constants.js";
+import { copyAndPasteData, execute } from "./helpers.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 class Languages {
+  static async _join(pathName) {
+    return path.join(__dirname, pathName);
+  }
+
   static async react(name, features) {
     const featureChecked = {};
     features.map((feature) => (featureChecked[feature] = true));
@@ -17,14 +26,28 @@ class Languages {
       spinner.instation.start();
       await execute(instationScript);
       spinner.instation.succeed(constants.SPINNER.INSTATION.SUCCEED);
-
       spinner.install.start();
       await execute(installationScript);
       spinner.install.succeed(constants.SPINNER.INSTALL.SUCCEED);
-
       spinner.folders.start();
       await execute(folderCreationScript);
       spinner.folders.succeed(constants.SPINNER.FOLDERS.SUCCEED);
+
+      spinner.cleanup.start();
+      const templatePath = `../template/react`;
+      const projectPath = `${process.cwd()}/${projectName}`;
+      const fileExtName = featureChecked.typescript ? "t" : "j";
+
+      const appFileSource = await this._join(
+        `${templatePath}/App.${fileExtName}sx`
+      );
+      const appFileDestination = `${projectPath}/src/App.${fileExtName}sx`;
+      copyAndPasteData(appFileSource, appFileDestination);
+
+      const appStyleFileSource = await this._join(`${templatePath}/App.css`);
+      const appStyleFileDestination = `${projectPath}/src/App.css`;
+      copyAndPasteData(appStyleFileSource, appStyleFileDestination);
+      spinner.cleanup.succeed(constants.SPINNER.CLEANUP.SUCCEED);
     } catch (err) {
       console.error(err);
       if (spinner.instation.isSpinning) {
@@ -34,8 +57,16 @@ class Languages {
         spinner.install.fail(constants.SPINNER.INSTALL.FAIL);
       }
       if (spinner.folders.isSpinning) {
-        spinner.folders.fail(constants.SPINNER.FOLDERS.START);
+        spinner.folders.fail(constants.SPINNER.FOLDERS.FAIL);
       }
+      if (spinner.cleanup.isSpinning) {
+        spinner.cleanup.fail(constants.SPINNER.CLEANUP.FAIL);
+      }
+
+      execute(`rm -rf ${projectName}`, (err) => {
+        if (err) return console.error(err.message);
+        console.log("Project deleted successfully!");
+      });
     }
   }
 }
