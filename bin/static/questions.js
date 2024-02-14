@@ -14,7 +14,7 @@ const questions = {
   languages: {
     type: "list",
     name: "language",
-    message: chalk.blueBright("Which template do you want to use?"),
+    message: chalk.blueBright("Which language template do you want to use?"),
     choices: ["react", "node"],
   },
   react: {

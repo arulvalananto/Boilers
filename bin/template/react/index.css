@@ -1,0 +1,32 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.5;
+}
+
+/*
+* Lobotomized Owl Selector
+* check this out for more info https://github.com/AllThingsSmitty/css-protips#use-the-lobotomized-owl-selector
+*/
+* + * {
+  margin-top: 1.5em;
+}
+
+:empty {
+  display: none;
+}

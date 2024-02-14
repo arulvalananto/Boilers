@@ -28,7 +28,6 @@ const initHandler = async () => {
     }
     console.log(bold(MESSAGE.INITIAL_SETUP_DONE, COLORS.green));
 
-    console.log(name, language, features, optionalFeatures);
     await Languages[language](name, features, optionalFeatures);
   } catch (error) {
     console.error(error.message);

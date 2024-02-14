@@ -33,6 +33,7 @@ class Languages {
       await execute(folderCreationScript);
       spinner.folders.succeed(constants.SPINNER.FOLDERS.SUCCEED);
 
+      // cleanup files
       spinner.cleanup.start();
       const templatePath = `../template/react`;
       const projectPath = `${process.cwd()}/${projectName}`;
@@ -47,7 +48,21 @@ class Languages {
       const appStyleFileSource = await this._join(`${templatePath}/App.css`);
       const appStyleFileDestination = `${projectPath}/src/App.css`;
       copyAndPasteData(appStyleFileSource, appStyleFileDestination);
+
+      const indexStyleFileSource = await this._join(
+        `${templatePath}/index.css`
+      );
+      const indexStyleFileDestination = `${projectPath}/src/index.css`;
+      copyAndPasteData(indexStyleFileSource, indexStyleFileDestination);
+
+      const indexFileSource = await this._join(
+        `${templatePath}/index-${fileExtName}sx.html`
+      );
+      const indexFileDestination = `${projectPath}/index.html`;
+      copyAndPasteData(indexFileSource, indexFileDestination);
       spinner.cleanup.succeed(constants.SPINNER.CLEANUP.SUCCEED);
+
+      // add features
     } catch (err) {
       console.error(err);
       if (spinner.instation.isSpinning) {
