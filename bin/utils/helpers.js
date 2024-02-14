@@ -34,6 +34,6 @@ export const bold = (message, color = "yellow") => {
 export const copyAndPasteData = (source, destination) => {
   fsExtra.copy(source, destination, (err) => {
     if (err) console.error(err.message);
-    else console.log("Content copied successfully!");
+    //else console.log("Content copied successfully!");
   });
 };
