@@ -1,4 +1,4 @@
-# Scaffoler
+# Scaffolder
 
 A scaffold generator that can assist you in creating a basic structure for your upcoming React and Node application. It can automatically generate the files and folders required to start a project and includes boilerplate code you can build upon.
 
@@ -14,21 +14,21 @@ A scaffold generator that can assist you in creating a basic structure for your 
 ## How to Install (globally)
 
 ```shell
-npm install -g boilers
+npm install -g scaffolder
 ```
 
 ## Commands
 
 ```shell
-boilers init    Initialize a new boilerplate project.            [aliases: i]
-boilers list    List all available boilerplate or template.      [aliases: ls]
-boilers create  Create specific template                         [aliases: c]
+scaffolder init    Initialize a new boilerplate project.            [aliases: i]
+scaffolder list    List all available boilerplate or template.      [aliases: ls]
+scaffolder create  Create specific template                         [aliases: c]
 ```
 
 ## How to Remove
 
 ```shell
-npm remove -g boilers
+npm remove -g scaffolder
 ```
 
 ### Like Boilers? Give our repo a star
