@@ -26,6 +26,7 @@ export default {
   COLORS: {
     red: "red",
     green: "green",
+    yellow: "yellow",
   },
   SPINNER: {
     INSTATION: {
@@ -52,6 +53,11 @@ export default {
       START: "Adding features",
       SUCCEED: "🧩 features added",
       FAIL: "features addition failed",
+    },
+    PRETTIER: {
+      START: "Prettifying",
+      SUCCEED: "🎨 prettified",
+      FAIL: "prettify failed",
     },
   },
 };

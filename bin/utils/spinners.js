@@ -13,6 +13,7 @@ const spinner = {
   folders: createSpinner(constants.SPINNER.FOLDERS.START, "yellow"),
   cleanup: createSpinner(constants.SPINNER.CLEANUP.START, "yellow"),
   features: createSpinner(constants.SPINNER.FEATURES.START, "yellow"),
+  prettier: createSpinner(constants.SPINNER.PRETTIER.START, "yellow"),
 };
 
 export default spinner;

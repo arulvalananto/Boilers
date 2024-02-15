@@ -15,7 +15,17 @@ const questions = {
     type: "list",
     name: "language",
     message: chalk.blueBright("Which language template do you want to use?"),
-    choices: ["react", "node"],
+    choices: [
+      {
+        name: "ReactJS",
+        value: "react",
+      },
+      {
+        name: "NodeJS",
+        value: "node",
+        disabled: "Coming soon!",
+      },
+    ],
   },
   react: {
     features: {
@@ -40,6 +50,11 @@ const questions = {
         {
           name: "TypeScript",
           value: "typescript",
+        },
+        {
+          name: "Husky (pre-commit tool)",
+          value: "husky",
+          disabled: "Not available yet",
         },
       ],
     },

@@ -1,9 +1,13 @@
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+
 import spinner from "./spinners.js";
 import packages from "../static/packages.js";
 import constants from "../static/constants.js";
-import { copyAndPasteData, execute } from "./helpers.js";
+import { bold, copyAndPasteData, execute } from "./helpers.js";
+
+const { COLORS } = constants;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,9 +32,11 @@ class Languages {
     spinner.install.succeed(constants.SPINNER.INSTALL.SUCCEED);
   }
 
-  static async _react_foldersSetup(projectName) {
+  static async _react_foldersSetup(projectName, featureChecked) {
     spinner.folders.start();
-    const folderCreationScript = `cd ${projectName}/src && mkdir api components pages hooks hoc utils`;
+    const folderCreationScript = `cd ${projectName}/src && mkdir api components pages hooks hoc utils ${
+      featureChecked.redux ? "store" : ""
+    }`;
     await execute(folderCreationScript);
     spinner.folders.succeed(constants.SPINNER.FOLDERS.SUCCEED);
   }
@@ -39,6 +45,7 @@ class Languages {
     spinner.cleanup.start();
     const templatePath = `../template/react`;
     const projectPath = `${process.cwd()}/${projectName}`;
+    const isTypescript = fileExtName === "t";
 
     const appFileSource = await this._join(
       `${templatePath}/App.${fileExtName}sx`
@@ -59,6 +66,31 @@ class Languages {
     );
     const indexFileDestination = `${projectPath}/index.html`;
     copyAndPasteData(indexFileSource, indexFileDestination);
+
+    const hocSource = await this._join(
+      `${templatePath}/hoc${isTypescript ? "-ts" : ""}/`
+    );
+    const hocDestination = `${projectPath}/src/hoc/`;
+    copyAndPasteData(hocSource, hocDestination);
+
+    const pageSource = await this._join(
+      `${templatePath}/pages${isTypescript ? "-ts" : ""}/`
+    );
+    const pageDestination = `${projectPath}/src/pages/`;
+    copyAndPasteData(pageSource, pageDestination);
+
+    const publicSource = await this._join(`${templatePath}/public/`);
+    const publicDestination = `${projectPath}/public/`;
+    copyAndPasteData(publicSource, publicDestination);
+
+    const readMeSource = await this._join(`${templatePath}/README.md`);
+    const readMeDestination = `${projectPath}/README.md`;
+    copyAndPasteData(readMeSource, readMeDestination);
+
+    const envSource = await this._join(`${templatePath}/.env`);
+    const envDestination = `${projectPath}/.env`;
+    copyAndPasteData(envSource, envDestination);
+
     spinner.cleanup.succeed(constants.SPINNER.CLEANUP.SUCCEED);
   }
 
@@ -83,11 +115,69 @@ class Languages {
         );
         destination = `${projectPath}/src/App.${fileExtName}sx`;
         copyAndPasteData(source, destination);
-      } 
-        
+      } else if (feature === "tailwind") {
+        source = await this._join(`${templatePath}/tailwind.config.js`);
+        destination = `${projectPath}/tailwind.config.js`;
+        copyAndPasteData(source, destination);
+
+        source = await this._join(`${templatePath}/index-tailwind.css`);
+        destination = `${projectPath}/src/index.css`;
+        copyAndPasteData(source, destination);
+      } else if (feature === "redux") {
+        if (fileExtName === "t") {
+          source = await this._join(`${templatePath}/store-ts/`);
+          destination = `${projectPath}/src/store/`;
+          copyAndPasteData(source, destination);
+        } else {
+          source = await this._join(`${templatePath}/store/`);
+          destination = `${projectPath}/src/store/`;
+          copyAndPasteData(source, destination);
+        }
+        source = await this._join(
+          `${templatePath}/main-redux.${fileExtName}sx`
+        );
+        destination = `${projectPath}/src/main.${fileExtName}sx`;
+        copyAndPasteData(source, destination);
+      }
     }
 
     spinner.features.succeed(constants.SPINNER.FEATURES.SUCCEED);
+  }
+
+  static async _react_prettify(projectName) {
+    spinner.prettier.start();
+    await execute(`cd ${projectName} && npm install -D prettier`);
+
+    const prettierConfig = await this._join(`../template/react/.prettierrc`);
+    const projectPath = `${process.cwd()}/${projectName}/.prettierrc`;
+    copyAndPasteData(prettierConfig, projectPath);
+
+    const prettierIgnore = await this._join(
+      `../template/react/.prettierignore`
+    );
+    const projectIgnorePath = `${process.cwd()}/${projectName}/.prettierignore`;
+    copyAndPasteData(prettierIgnore, projectIgnorePath);
+
+    const vscodeSettings = await this._join(`../template/react/.vscode/`);
+    const projectVscodeSettings = `${process.cwd()}/${projectName}/.vscode/`;
+    copyAndPasteData(vscodeSettings, projectVscodeSettings);
+
+    const packageJsonPath = `${projectName}/package.json`;
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+    packageJson.scripts = {
+      dev: "vite",
+      build: "tsc && vite build",
+      lint: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+      preview: "vite preview",
+      "lint:fix": "npm run lint -- --fix",
+      prettier: "npx prettier src --check",
+      "prettier:fix": "npm run prettier -- --write",
+      "pre-commit": "npm run lint && npm run prettier",
+      "pre-commit:fix": "npm run prettier:fix && npm run lint:fix",
+    };
+    fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+
+    spinner.prettier.succeed(constants.SPINNER.PRETTIER.SUCCEED);
   }
 
   static async _react_errorCleanup(projectName, err) {
@@ -107,6 +197,9 @@ class Languages {
     if (spinner.features.isSpinning) {
       spinner.features.fail(constants.SPINNER.FEATURES.FAIL);
     }
+    if (spinner.prettier.isSpinning) {
+      spinner.prettier.fail(constants.SPINNER.PRETTIER.FAIL);
+    }
 
     execute(`rm -rf ${projectName}`, (err) => {
       if (err) return console.error(err.message);
@@ -124,12 +217,20 @@ class Languages {
     try {
       await this._react_instation(projectName, featureChecked);
       await this._react_installation(projectName);
-      await this._react_foldersSetup(projectName);
+      await this._react_foldersSetup(projectName, featureChecked);
       await this._react_cleanupFiles(projectName, fileExtName);
       await this._react_features(
         projectName,
         features.filter((f) => f !== "typescript"),
         fileExtName
+      );
+      await this._react_prettify(projectName);
+
+      console.log(
+        `\n🎉 Ready to go 🎉\n\nTo get started:\n\n  ${bold(
+          `cd ${projectName}`,
+          COLORS.yellow
+        )}\n  ${bold("npm run dev", COLORS.green)}`
       );
     } catch (err) {
       this._react_errorCleanup(projectName, err);
