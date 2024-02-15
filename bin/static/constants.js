@@ -1,5 +1,5 @@
 export default {
-  SCRIPT_NAME: "boilers",
+  SCRIPT_NAME: "scaffolder",
   CLI_USAGE:
     "$0 is a CLI tool that used to simplify the process of boilerplate code generation. \n\n To start using it, run `$0 init` or `$0 i`.",
   COMMANDS: {
@@ -19,7 +19,7 @@ export default {
     },
   },
   MESSAGE: {
-    INTRO: "🤖 Welcome to Boilers 🤖",
+    INTRO: "🤖 Welcome to Scaffolder CLI 🤖",
     INITIAL_SETUP_DONE: "✔ Initial setup done",
     BYE: "Okay! See you later 🥺",
   },

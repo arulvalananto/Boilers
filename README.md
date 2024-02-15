@@ -14,7 +14,7 @@ A scaffold generator that can assist you in creating a basic structure for your 
 ## How to Install (globally)
 
 ```shell
-npm install -g scaffolder
+npm install -g scafffolder
 ```
 
 ## Commands
@@ -28,11 +28,11 @@ scaffolder create  Create specific template                         [aliases: c]
 ## How to Remove
 
 ```shell
-npm remove -g scaffolder
+npm remove -g scafffolder
 ```
 
-### Like Boilers? Give our repo a star
+### Like scaffolder? Give our repo a star
 
-#### Getting any Issue [here](https://github.com/arulvalananto/boilers/issues)
+#### Getting any Issue [here](https://github.com/arulvalananto/scaffolder/issues)
 
 #### Contribute? [Contact me](https://github.com/arulvalananto)
