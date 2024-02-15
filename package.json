@@ -1,16 +1,16 @@
 {
-  "name": "boilers",
+  "name": "scaffolder",
   "version": "1.0.0",
   "description": "A boilerplate tool for javascript frameworks and libraries",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "boilers": "bin/index.js"
+    "scaffolder": "bin/index.js"
   },
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arulvalananto/boilers.git"
+    "url": "git+https://github.com/arulvalananto/scaffolder.git"
   },
   "keywords": [
     "boilerplate",
@@ -22,14 +22,16 @@
     "boiler",
     "builder",
     "boiler",
-    "plate"
+    "plate",
+    "scaffolder",
+    "scaffolding tool"
   ],
   "author": "Arul Valan Anto S",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arulvalananto/boilers/issues"
+    "url": "https://github.com/arulvalananto/scaffolder/issues"
   },
-  "homepage": "https://github.com/arulvalananto/boilers#readme",
+  "homepage": "https://github.com/arulvalananto/scaffolder#readme",
   "devDependencies": {
     "mocha": "^10.0.0",
     "nodemon": "^3.0.1"
