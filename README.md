@@ -1,4 +1,4 @@
-# Scaffolder
+# Scafffolder
 
 A scaffold generator that can assist you in creating a basic structure for your upcoming React and Node application. It can automatically generate the files and folders required to start a project and includes boilerplate code you can build upon.
 

@@ -1,6 +1,6 @@
 {
   "name": "scafffolder",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "A boilerplate tool for javascript frameworks and libraries",
   "main": "index.js",
   "type": "module",
