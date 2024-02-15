@@ -1,5 +1,5 @@
 {
-  "name": "@arulvalananto/scaffolder",
+  "name": "whynotboilerplate",
   "version": "1.0.0",
   "description": "A boilerplate tool for javascript frameworks and libraries",
   "main": "index.js",
