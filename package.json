@@ -12,9 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/arulvalananto/scaffolder.git"
   },
-"publishConfig": {
-  "@arulvalananto:registry": "https://npm.pkg.github.com"
-},
   "keywords": [
     "boilerplate",
     "javascript",
