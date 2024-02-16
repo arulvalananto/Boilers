@@ -19,7 +19,7 @@ export default {
     },
   },
   MESSAGE: {
-    INTRO: "🤖 Welcome to Scaffolder CLI 🤖",
+    INTRO: "/n/t 🤖 Welcome to Scaffolder CLI 🤖 /t/n",
     INITIAL_SETUP_DONE: "✔ Initial setup done",
     BYE: "Okay! See you later 🥺",
   },
